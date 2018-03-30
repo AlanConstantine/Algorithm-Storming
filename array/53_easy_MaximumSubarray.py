@@ -24,21 +24,22 @@ class Solution1:
         return max
 
 
-class Solution2:
-    def maxSubArray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        maxsum, _sum = 0, 0
-        for i in range(len(nums)):
-            _sum += nums[i]
-            if _sum > maxsum:
-                maxsum = _sum
-            elif _sum < 0:
-                _sum = nums[i]
-        return maxsum
+# class Solution2:
+#     def maxSubArray(self, nums):
+#         """
+#         :type nums: List[int]
+#         :rtype: int
+#         """
+#         maxsum, _sum = 0, 0
+#         for i in range(len(nums)):
+#             maxsum = nums[i]
+#             _sum += nums[i]
+#             if _sum > maxsum:
+#                 maxsum = _sum
+#             elif _sum < 0:
+#                 _sum = 0
+#         return maxsum
 
 
-nums = [-2, -1]
-print(Solution2().maxSubArray(nums))
+nums = [-2, -1, 1, 2]
+print(Solution1().maxSubArray(nums))
