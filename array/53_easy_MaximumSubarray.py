@@ -3,16 +3,42 @@
 # 连续子序列 [4,-1,2,1] 的和最大，为 6。
 
 
-class Solution:
+class Solution1:
     def maxSubArray(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        max = 0
+        max = min(nums)
+        left = 0
+        if len(nums) == 1:
+            return nums[0]
+        while left <= len(nums) - 1:
+            for right in range(len(nums), 0, -1):
+                if right <= left:
+                    break
+                splitsum = sum(nums[left:right])
+                if splitsum > max:
+                    max = splitsum
+            left += 1
+        return max
+
+
+class Solution2:
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        maxsum, _sum = 0, 0
         for i in range(len(nums)):
-            pass
+            _sum += nums[i]
+            if _sum > maxsum:
+                maxsum = _sum
+            elif _sum < 0:
+                _sum = nums[i]
+        return maxsum
 
 
-nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-print(Solution().maxSubArray(nums))
+nums = [-2, -1]
+print(Solution2().maxSubArray(nums))
