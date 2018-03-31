@@ -23,7 +23,14 @@ n4 = Node(4)
 n1.next = n2
 n2.next = n3
 n3.next = n4
-reverse(n1, Node)
+
+print(n1.next.value)
+print(n2.next.value)
+print(n3.next.value)
+print(n4.next)
+
+reverse(n1, None)
+print('After reverse')
 print(n4.next.value)
 print(n3.next.value)
 print(n2.next.value)
