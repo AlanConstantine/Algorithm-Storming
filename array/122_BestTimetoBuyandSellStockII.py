@@ -11,18 +11,17 @@ class Solution:
         """
         if len(prices) == 0:
             return 0
-        tprofit, profit, mini, sellpoint = 0, 0, prices[0], prices[0]
+        tprofit, profit, mini = 0, 0, prices[0]
         for i in range(len(prices)):
             if prices[i] > mini:
-                tprofit = max(prices[i] - mini, tprofit)
+                tprofit = prices[i] - mini
+                profit += tprofit
                 mini = prices[i]
             else:
                 mini = prices[i]
-                profit += tprofit
-                tprofit = 0
         return profit
 
 
-prices = [2, 4, 1]
+prices = [1, 2, 4]
 prices2 = [3, 2, 6, 5, 0, 3]
 print(Solution().maxProfit(prices2))
