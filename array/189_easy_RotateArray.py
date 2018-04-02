@@ -14,8 +14,24 @@ class Solution:
         :type k: int
         :rtype: void Do not return anything, modify nums in-place instead.
         """
+        if len(nums) != 1:
+            right = len(nums) - 1
+            self.r(nums, k, right)
+        # return nums
+
+    def r(self, nums, k, right):
+        temp = nums[k]
+        for i in range(k + 1, right + 1):
+            nums[i - 1] = nums[i]
+        nums[right] = temp
+        right -= 1
+        k -= 1
+        if k == -1:
+            return
+        # print(nums)
+        self.r(nums, k, right)
 
 
 nums = [1, 2, 3, 4, 5, 6, 7]
-k = 7
+k = 3
 print(Solution().rotate(nums, k))
