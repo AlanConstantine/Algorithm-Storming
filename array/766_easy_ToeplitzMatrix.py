@@ -46,24 +46,18 @@ class Solution:
         :type matrix: List[List[int]]
         :rtype: bool
         """
-        flag = True
-        for i in range(len(matrix[0])):
-            for j in range(1, len(matrix[0])):
-                n = 1
-                if i+n >= len(matrix[0]):
-                    break
-                if matrix[0][i] != matrix[j][i+n]:
-                    return False
-                n += 1
-        return flag
+        for i in range(1, len(matrix)):
+            if matrix[i-1][:-1] != matrix[i][1:]:
+                return False
+        return True
 
 
-matrix = [
-    [1, 2, 3, 4],
-    [5, 1, 2, 3],
-    [9, 5, 1, 2]
-]
-# matrix = [[1, 2],
-#           [2, 2]]
+# matrix = [
+#     [1, 2, 3, 4],
+#     [5, 1, 2, 3],
+#     [9, 5, 1, 2]
+# ]
+matrix = [[1, 2],
+          [2, 2]]
 s = Solution()
 print(s.isToeplitzMatrix(matrix))
