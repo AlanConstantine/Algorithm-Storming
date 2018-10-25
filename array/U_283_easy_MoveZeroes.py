@@ -9,6 +9,22 @@ class Solution:
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
+        ret = []
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                ret.append(nums[i])
+        get_zero = (len(nums)-len(ret))*[0]
+        nums = ret
+        nums.extend(get_zero)
+        return nums
+
+
+class Solution2:
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
         if len(nums) == 0:
             return
         self.trs(nums)
@@ -24,7 +40,7 @@ class Solution:
             return
 
 
-class Solution2:
+class Solution3:
     def moveZeroes(self, nums):
         """
         :type nums: List[int]
@@ -67,4 +83,5 @@ class Solution2:
 
 
 nums = [0, 1, 0, 3, 12]
-print(Solution2().moveZeroes(nums))
+# nums = [0, 0, 1]
+print(Solution().moveZeroes(nums))
