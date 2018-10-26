@@ -3,7 +3,7 @@
 # 连续子序列 [4,-1,2,1] 的和最大，为 6。
 
 
-class Solution1:
+class Solution:
     def maxSubArray(self, nums):
         """
         :type nums: List[int]
