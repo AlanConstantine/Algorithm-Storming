@@ -1,2 +1,2 @@
-# leetcode_python
+# LeetCodePython
 python刷LeetCode
