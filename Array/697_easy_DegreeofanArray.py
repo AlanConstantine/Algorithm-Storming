@@ -44,6 +44,27 @@ class Solution:
         return res[1][2] - res[1][1] + 1
 
 
+class Solution2:
+
+    def findShortestSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        import collections
+        hashmap = collections.defaultdict(list)
+        for index, num in enumerate(nums):
+            hashmap[num].append(index)
+
+        maxi = len(max(hashmap.values(), key=len))
+        res = []
+        for key, value in hashmap.items():
+            if len(value) == maxi:
+                res.append(value[-1] - value[0] + 1)
+
+        return min(res)
+
+
 def main():
     s = Solution()
     nums = [1, 2, 2, 3, 1, 4, 2]
