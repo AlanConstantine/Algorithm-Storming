@@ -35,11 +35,22 @@ class Solution(object):
         :type K: int
         :rtype: List[int]
         """
+        pass
+
+
+class SolutionII(object):
+    def addToArrayForm(self, A, K):
+        """
+        :type A: List[int]
+        :type K: int
+        :rtype: List[int]
+        """
+        return list(map(lambda y: int(y), list(str(int(''.join(map(lambda x: str(x), A)))+K))))
 
 
 def main():
-    A = 35
-    K = [2, 1, 5]
+    K = 35
+    A = [2, 1, 5]
     s = Solution()
     print(s.addToArrayForm(A, K))
 
