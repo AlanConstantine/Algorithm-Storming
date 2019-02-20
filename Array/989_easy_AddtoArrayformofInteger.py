@@ -35,7 +35,32 @@ class Solution(object):
         :type K: int
         :rtype: List[int]
         """
-        pass
+        # if K == 0:
+        #     return A
+        # K = str(K)
+        # m = 0
+        # res = []
+        # for i in range(len(A)):
+        #     p = -1*(i+1)
+        #     plusnum = A[p]
+        #     if m == 1:
+        #         plusnum = plusnum+m
+        #         m = 0
+        #     if i >= len(K):
+        #         if plusnum >= 10:
+        #             res.insert(0, plusnum-10)
+        #             m += 1
+        #         else:
+        #             res.insert(0, plusnum)
+        #     if i < len(K):
+        #         sum_ = plusnum+int(K[p])
+        #         if sum_ >= 10:
+        #             m += 1
+        #             sum_ -= 10
+        #         res.insert(0, sum_)
+        # if m == 1:
+        #     res.insert(0, 1)
+        # return res
 
 
 class SolutionII(object):
@@ -49,7 +74,7 @@ class SolutionII(object):
 
 
 def main():
-    K = 35
+    K = 806
     A = [2, 1, 5]
     s = Solution()
     print(s.addToArrayForm(A, K))
