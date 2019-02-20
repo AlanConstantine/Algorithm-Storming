@@ -32,17 +32,22 @@ class Solution(object):
         :type S: str
         :rtype: List[List[int]]
         """
+        if len(S) < 3:
+            return []
         res = []
-        p = 0
-        tmp = []
+        p = 1
         for i in range(len(S)-1):
+            s = S[i]
             if S[i] == S[i+1]:
                 p += 1
-            if S[i] != S[i+1] and p >= 2:
-                res.append([i-p, i])
-                p = 0
             if S[i] != S[i+1]:
-                p = 0
+                if p > 2:
+                    res.append([i-p+1, i])
+                    p = 1
+                else:
+                    p = 1
+            if i == len(S)-2 and p > 2:
+                res.append([i-p+2, i+1])
         return res
 
 
