@@ -31,7 +31,23 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
-        pass
+        p1, p2 = 0, 0
+        for i in range(2, len(cost) + 1):
+            p1, p2 = p2, min(p2 + cost[i - 1], p1 + cost[i - 2])
+        return p2
+
+
+class Solution2(object):
+
+    def minCostClimbingStairs(self, cost):
+        """
+        :type cost: List[int]
+        :rtype: int
+        """
+        f1 = f2 = 0
+        for x in reversed(cost):
+            f1, f2 = x + min(f1, f2), f1
+        return min(f1, f2)
 
 
 def main():
