@@ -38,9 +38,8 @@
 #         max_count = -1
 #         for i in range(len(seats)):
 #             if seats[i] == 0:
-#                 startp = i
 #                 count += 1
-#                 if count > max_count:
+#                 if count >= max_count and endp-max_count+1 != 0:
 #                     max_count = count
 #                     endp = i
 #             else:
@@ -50,24 +49,25 @@
 #         else:
 #             return max_count//2 if max_count % 2 == 0 else max_count//2+1
 
-class Solution(object):
-    def maxDistToClosest(self, seats):
-        """
-        :type seats: List[int]
-        :rtype: int
-        """
-        max_ = 0
-        flag = -1
-        for i in range(len(seats)):
-            if seats[i] == 1:
-                if flag == -1:
-                    max_ = i
-                else:
-                    max_ = max((i-flag)/2, max_)
-                flag = i
-        return max(max_, len(seats)-flag-1)
+
+# class Solution(object):
+#     def maxDistToClosest(self, seats):
+#         """
+#         :type seats: List[int]
+#         :rtype: int
+#         """
+#         max_ = 0
+#         flag = -1
+#         for i in range(len(seats)):
+#             if seats[i] == 1:
+#                 if flag == -1:
+#                     max_ = i
+#                 else:
+#                     max_ = max((i-flag)/2, max_)
+#                 flag = i
+#         return max(max_, len(seats)-flag-1)
 
 
-seats = [0, 1, 1, 1, 0, 0, 1, 0, 0]
+seats = [0, 0, 1, 1, 1, 0, 0, 1, 0, 0]
 s = Solution()
 print(s.maxDistToClosest(seats))
