@@ -48,6 +48,18 @@ class SolutionII:
         print(nums)
 
 
+class SolutionIII:
+    def rotate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums)
+        nums[:] = nums[n-k:]+nums[:n-k]
+        print(nums)
+
+
 nums = [1, 2, 3, 4, 5, 6, 7]
 k = 3
-Solution().rotate(nums, k)
+SolutionIII().rotate(nums, k)
