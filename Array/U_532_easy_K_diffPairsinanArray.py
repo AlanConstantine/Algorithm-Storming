@@ -41,6 +41,7 @@ class Solution:
                 if abs(nums[i] - nums[j]) == k and [nums[i], nums[j]] not in counter:
                     counter.append([nums[i], nums[j]])
         return len(counter)
+    # Time out
 
 
 # class Solution:
