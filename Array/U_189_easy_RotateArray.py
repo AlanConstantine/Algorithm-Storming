@@ -14,24 +14,18 @@ class Solution:
         :type k: int
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        if len(nums) != 1:
-            right = len(nums) - 1
-            self.r(nums, k, right)
-        # return nums
+        i = 0
+        while k != 0 and i < k+1:
+            point = nums[0]
+            for j in range(1, len(nums)):
+                nums[j-1] = nums[j]
+            nums[-1] = point
+            i += 1
+        print(nums)
 
-    def r(self, nums, k, right):
-        temp = nums[k]
-        for i in range(k + 1, right + 1):
-            nums[i - 1] = nums[i]
-        nums[right] = temp
-        right -= 1
-        k -= 1
-        if k == -1:
-            return
-        # print(nums)
-        self.r(nums, k, right)
+        # Unsolved k==1 and k==len(nums)-1
 
 
 nums = [1, 2, 3, 4, 5, 6, 7]
-k = 3
-print(Solution().rotate(nums, k))
+k = 6
+Solution().rotate(nums, k)
