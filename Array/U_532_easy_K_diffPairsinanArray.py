@@ -32,17 +32,45 @@ class Solution:
         :type k: int
         :rtype: int
         """
-        import math
-        counter = 0
+        if k < 0:
+            return 0
+        counter = []
+        nums.sort()
         for i in range(len(nums)):
             for j in range(i + 1, len(nums)):
-                if abs(nums[i] - nums[j]) == k:
-                    print(nums[i], nums[j])
-                    counter += 1
-        return counter
+                if abs(nums[i] - nums[j]) == k and [nums[i], nums[j]] not in counter:
+                    counter.append([nums[i], nums[j]])
+        return len(counter)
 
 
-k = 2
-nums = [3, 1, 4, 1, 5]
+# class Solution:
+#     def findPairs(self, nums, k):
+#         """
+#         :type nums: List[int]
+#         :type k: int
+#         :rtype: int
+#         """
+#         temp = {}
+#         for i in nums:
+#             if i in temp:
+#                 i++
+#             else:
+#                 temp[i] = 1
+#         pass
+
+        # temp = list(set(nums))
+        # if k == 0 and len(temp) != 1:
+        #     return len(nums)-len(temp)
+        # if k < 0:
+        #     return 0
+        # count = 0
+        # for i in range(len(temp)):
+        #     if temp[i]+k in temp or temp[i]-k in temp[i+1:]:
+        #         count += 1
+        # return count
+
+
+k = 0
+nums = [1, 1, 1, 1, 1]
 num = Solution().findPairs(nums, k)
 print(num)
