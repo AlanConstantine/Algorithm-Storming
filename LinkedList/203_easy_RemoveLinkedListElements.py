@@ -18,7 +18,25 @@ class ListNode(object):
         self.next = None
 
 
-class Solution(object):
+# class Solution(object):
+#     def removeElements(self, head, val):
+#         """
+#         :type head: ListNode
+#         :type val: int
+#         :rtype: ListNode
+#         """
+#         if head.val == val:
+#             head.val = head.next.val
+#             head.next = head.next.next
+#         while head.next:
+#             if head.next.val == val:
+#                 head.next = head.next.next
+#             else:
+#                 head = head.next
+#         return head
+
+
+class SolutionII(object):
     def removeElements(self, head, val):
         """
         :type head: ListNode
@@ -32,7 +50,7 @@ class Solution(object):
 
 
 n1 = ListNode(6)
-n2 = ListNode(2)
+n2 = ListNode(6)
 n3 = ListNode(6)
 n4 = ListNode(3)
 n5 = ListNode(4)
@@ -48,4 +66,4 @@ n6.next = n7
 
 s = Solution()
 s.removeElements(n1, 6)
-print(n5.next)
+print(n1.val)
