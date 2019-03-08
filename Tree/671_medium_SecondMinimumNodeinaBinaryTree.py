@@ -42,16 +42,18 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        global tmp
         tmp = []
 
-        def midtraverse(root):
+        def midtraverse(root, tmp):
             if root == None:
                 return
-            midtraverse(root.left)
+            midtraverse(root.left, tmp)
             tmp.append(root.val)
-            midtraverse(root.right)
+            midtraverse(root.right, tmp)
+        midtraverse(root, tmp)
         tmp = list(set(tmp))
+        tmp.sort()
+        return -1 if len(tmp) == 1 else tmp[1]
 
 
 # 输入: root = [5,3,6,2,4,null,null,1]
