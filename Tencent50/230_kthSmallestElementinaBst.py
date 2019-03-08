@@ -48,7 +48,7 @@ class Solution(object):
         sortnode = []
 
         def midtraverse(root):
-            if root == None:
+            if not root:
                 return
             midtraverse(root.left)
             sortnode.append(root.val)
