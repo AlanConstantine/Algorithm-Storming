@@ -41,3 +41,27 @@ class Solution(object):
         :type nums: List[int]
         :rtype: TreeNode
         """
+        def maxIndex(nums, start, end):
+            max_index = start
+            for i in range(start, end+1):
+                if nums[i] > nums[max_index]:
+                    max_index = i
+            return max_index
+
+        def buildtree(nums, start, end):
+            if start > end:
+                return None
+            max_index = maxIndex(nums, start, end)
+            n = TreeNode(nums[max_index])
+            n.left = buildtree(nums, start, max_index-1)
+            n.right = buildtree(nums, max_index+1, end)
+            return n
+
+        return buildtree(nums, 0, len(nums)-1)
+
+
+nums = [3, 2, 1, 6, 0, 5]
+s = Solution()
+root = s.constructMaximumBinaryTree(nums)
+print(root.val)
+print(root.left.val)
