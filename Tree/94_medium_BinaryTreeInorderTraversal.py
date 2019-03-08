@@ -34,13 +34,13 @@ class Solution(object):
         global tmp
         tmp = []
 
-        def mid(root):
+        def midt(root):
             if not root:
                 return
-            mid(root.left)
+            midt(root.left)
             tmp.append(root.val)
-            mid(root.right)
-        mid(root)
+            midt(root.right)
+        midt(root)
         return tmp
 
 
