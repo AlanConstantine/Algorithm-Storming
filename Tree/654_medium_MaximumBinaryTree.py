@@ -35,7 +35,7 @@ class TreeNode(object):
         self.right = None
 
 
-class Solution(object):
+class SolutionII(object):
     def constructMaximumBinaryTree(self, nums):
         """
         :type nums: List[int]
