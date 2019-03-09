@@ -33,6 +33,12 @@
 #         self.left = None
 #         self.right = None
 
+
+# 二叉搜索树也叫二叉顺序树，特点在于一个节点的左侧值一定比该节点小，节点右侧的值一定比该节点大。
+# 因此可以判断p和q对和当前节点的值的对比：
+# 若p和q的节点同时大于或者小于一个节点，说明p和q一定在右子树或者左子树。
+# 若p和q落在一个节点左右两侧，说明该节点一定就是p和q的父节点。
+
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
         """
