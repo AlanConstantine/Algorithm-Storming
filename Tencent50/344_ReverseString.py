@@ -24,6 +24,7 @@ class Solution(object):
         :type s: List[str]
         :rtype: None Do not return anything, modify s in-place instead.
         """
+        # 双指针，首位指向，相中间靠拢
         p = 0
         q = len(s)-1
         while p < q:
