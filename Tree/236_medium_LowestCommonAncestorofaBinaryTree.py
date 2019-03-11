@@ -40,6 +40,9 @@ class TreeNode(object):
 # 2. 如果左右子树返回值只有一个不为null, 说明只有p和q存在与左或右子树中, 最先找到的那个节点为LCA
 # 3. 左右子树返回值均为null, p和q均不在树中, 返回null
 
+# 如果左右子树都找到p或者q，则说明当前节点一定是夫节点
+# 如果只有一边找到了，那一定这一边最先找到答案的节点
+
 
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
