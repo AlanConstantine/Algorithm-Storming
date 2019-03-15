@@ -33,3 +33,17 @@ class Solution:
 nums = [4, 1, 2, 1, 2]
 s = Solution()
 print(s.singleNumber(nums))
+
+
+# 异或知识
+# 异或的特性：
+# 1.恒定律：A ^ 0 = A
+# 2.归零率：A ^ A = 0
+# 3.交换律：A ^ B = B ^ A
+# 4.结合律：(A ^ B) ^ C = A ^ (B ^ C)
+
+# 假设所有的数组为：abcbcda
+# a ^ b ^ c ^ b ^ c ^ d ^ a
+# = a ^ a ^ b ^ b ^ c ^ c ^ d
+# = 0 ^ 0 ^ 0 ^ d
+# = d
