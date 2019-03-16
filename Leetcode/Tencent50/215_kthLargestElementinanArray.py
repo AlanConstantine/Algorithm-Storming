@@ -24,5 +24,36 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        self.quick_sort(nums, 0, len(nums)-1)
+        return nums[-k]
+
+    def quick_sort(self, nums, left, right):
+        if right == left:
+            return
+        povit = left
+        index = left+1
+        mid = nums[left]
+        for i in range(index, right+1):
+            if nums[i] <= mid:
+                nums[i], nums[index] = nums[index], nums[i]
+                index += 1
+        nums[povit], nums[index-1] = nums[index-1], nums[povit]
+        self.quick_sort(nums, left, index-1)
+        self.quick_sort(nums, index, right)
+
+
+class SolutionII(object):
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
         nums.sort(reverse=True)
         return nums[k-1]
+
+
+k = 4
+nums = [3, 2, 3, 1, 2, 4, 5, 5, 6]
+s = Solution()
+print(s.findKthLargest(nums, k))
