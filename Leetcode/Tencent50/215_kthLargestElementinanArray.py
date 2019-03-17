@@ -24,22 +24,25 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        self.quick_sort(nums, 0, len(nums)-1)
+        nums = self.partition(nums, 0, len(nums)-1)
         return nums[-k]
 
+    def partition(self, nums, left, right):
+        if right > left:
+            povit = self.quick_sort(nums, left, right)
+            self.partition(nums, left, povit)
+            self.partition(nums, povit+1, right)
+        return nums
+
     def quick_sort(self, nums, left, right):
-        if right == left:
-            return
         povit = left
         index = left+1
-        mid = nums[left]
         for i in range(index, right+1):
-            if nums[i] <= mid:
+            if nums[i] < nums[povit]:
                 nums[i], nums[index] = nums[index], nums[i]
                 index += 1
         nums[povit], nums[index-1] = nums[index-1], nums[povit]
-        self.quick_sort(nums, left, index-1)
-        self.quick_sort(nums, index, right)
+        return index-1
 
 
 class SolutionII(object):
