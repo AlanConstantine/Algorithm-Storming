@@ -62,12 +62,15 @@ class SolutionII(object):
         if n <= 2:
             return n
         one_step_way = 1
+        # 走一步
         two_step_way = 2
+        # 走两步
         all_way = 0
         for i in range(2, n):
-            all_way = one_step_way + two_step_way
-            one_step_way = two_step_way
-            two_step_way = all_way
+            all_way = one_step_way + two_step_way  # 当前状态仅和上一个状态和上上一个状态有关
+            # 当all_way作为当前状态求出来之后
+            one_step_way = two_step_way  # 上状态转移给上上状态
+            two_step_way = all_way  # 当前状态转移给上状态
         return all_way
 
 
