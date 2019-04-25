@@ -42,6 +42,7 @@ class Solution(object):
         :rtype: bool
         """
         return N % 2 == 0
+        # return N & 1 == 0 位运算
 
 
 s = Solution()
