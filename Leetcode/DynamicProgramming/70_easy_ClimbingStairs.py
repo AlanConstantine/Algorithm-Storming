@@ -74,5 +74,5 @@ class SolutionII(object):
         return all_way
 
 
-S = Solution()
-print(S.climbStairs(5))
+s = Solution()
+print(s.climbStairs(5))
