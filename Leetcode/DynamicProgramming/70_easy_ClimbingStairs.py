@@ -43,8 +43,6 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n == 0:
-            return 0
         if n <= 3:
             return n
         if n not in self.p:
@@ -53,6 +51,24 @@ class Solution(object):
             return steps
         else:
             return self.p[n]
+
+
+class SolutionII(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n <= 2:
+            return n
+        one_step_way = 1
+        two_step_way = 2
+        all_way = 0
+        for i in range(2, n):
+            all_way = one_step_way + two_step_way
+            one_step_way = two_step_way
+            two_step_way = all_way
+        return all_way
 
 
 S = Solution()
