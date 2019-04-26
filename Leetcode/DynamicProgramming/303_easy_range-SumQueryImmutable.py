@@ -23,6 +23,9 @@ class NumArray(object):
         """
         :type nums: List[int]
         """
+        # 在加载数组的时候就对数组进行累加就和，在原数组空间上进行
+        for i in range(1, len(nums)):
+            nums[i] += nums[i-1]
         self.nums = nums
 
     def sumRange(self, i, j):
@@ -31,10 +34,9 @@ class NumArray(object):
         :type j: int
         :rtype: int
         """
-        if i < j:
-            self.nums[i] = self.nums[i]+self.sumRange(i, j-1)
-        print(self.nums)
-        return self.nums[i]
+        if i == 0:
+            return self.nums[j]
+        return self.nums[j]-self.nums[i-1]
 
 
 # Your NumArray object will be instantiated and called as such:
