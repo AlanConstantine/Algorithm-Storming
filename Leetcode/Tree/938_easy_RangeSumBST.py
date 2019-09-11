@@ -25,6 +25,9 @@
 
 # Definition for a binary tree node.
 
+# 复习： 二叉搜索树（BST, Binary Sorted Tree）为有序的。因此可以试用深度优先搜索，
+# 当一个节点值小于左子树时，只需返回右子树之和，反之当一个节点之大于右子树时，只需要返回左子树之和。
+
 
 class TreeNode(object):
     def __init__(self, x):
