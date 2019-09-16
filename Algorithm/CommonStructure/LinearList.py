@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 # -*- coding: utf-8 -*-
 # @Date    : 2017-07-19 22:48:02
 # @Author  : AlanLau
@@ -42,25 +42,25 @@ class LinearList():
     def List_insert(self, x, i):
         '''insert x into position i.'''
         if i > len(self.linear) or i < 0:
-            print '[error] insert error!'
+            print('[error] insert error!')
         else:
             if i == len(self.linear):
                 self.linear.append(x)
             else:
                 lastone = self.linear[-1]
                 self.linear.append(lastone)
-                for index in xrange(len(self.linear)-1, i, -1):
+                for index in range(len(self.linear)-1, i, -1):
                     self.linear[index] = self.linear[index-1]
                 self.linear[i] = x
 
     def List_delete(self, i):
         '''delete element whose position is i.'''
         if i >= len(self.linear):
-            print '[error] i bigger than list range'
+            print('[error] i bigger than list range')
         elif i < 1:
-            print '[error] i smaller than 1'
+            print('[error] i smaller than 1')
         else:
-            for index in xrange(i, len(self.linear)):
+            for index in range(i, len(self.linear)):
                 if (index+1) >= len(self.linear):
                     break
                 else:
@@ -74,17 +74,17 @@ class LinearList():
 def main():
     # linear = [1, 2]
     lls = LinearList()
-    print lls.isEmpty()
+    print(lls.isEmpty())
     lls.List_insert(2, 0)
     lls.List_insert(3, 1)
     lls.List_insert(5, 2)
     # print lls.get_List()
     lls.List_insert(9, 1)
     lls.List_insert(19, 1)
-    print lls.get_List()
+    print(lls.get_List())
     # lls.List_delete(1)
     lls.List_delete(1)
-    print lls.get_List()
+    print(lls.get_List())
 
 
 if __name__ == '__main__':
