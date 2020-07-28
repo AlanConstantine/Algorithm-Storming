@@ -9,7 +9,7 @@ int main (){
     double harmonicSum = 0.0;
     int i = 1;
     while (i <= n){
-        harmonicSum = harmonicSum + double(1.0/i);
+        harmonicSum += double(1.0/i);
         ++i;
         // cout << "test: " << harmonicSum << endl;
     }

@@ -10,8 +10,8 @@ int main(){
     double sum;
     int Geometor = 0;
     while (Geometor <= n){
-        sum = sum + 1.0/pow(2, Geometor);
+        sum += 1.0 / pow(2, Geometor);
         ++Geometor;
-    cout << "The Geometrics sum: " << sum << endl;
     }
+    cout << "The Geometrics sum: " << sum << endl;
 }
