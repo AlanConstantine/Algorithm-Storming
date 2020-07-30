@@ -1,4 +1,5 @@
-
+#ifndef TIME_H
+#define TIME_H
 class Time {
     private:
         int hour;
@@ -21,3 +22,4 @@ class Time {
         void print() const;
         void nextSecond();
 };
+#endif
