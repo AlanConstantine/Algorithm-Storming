@@ -10,10 +10,44 @@
 #
 
 
-class Solution:
+class Solution1:
+    # bubble sort
+    # 两次循环 复杂度O(n*(n-1)) = O(n)
     def MySort(self, arr):
         # write code here
-        pass
+        for i in range(len(arr)):
+            for j in range(i+1, len(arr)):
+                if arr[i] > arr[j]:
+                    arr[i], arr[j] = arr[j], arr[i]
+        return arr
+
+
+class Solution2:
+    # selection sort
+    # 两次循环 复杂度O(n*(n-1)) = O(n)
+    def MySort(self, arr):
+        for i in range(0, len(arr)):
+            minindex = i
+            for j in range(i+1, len(arr)):
+                if arr[minindex] > arr[j]:
+                    minindex = j
+            temp = arr[i]
+            arr[i] = arr[minindex]
+            arr[minindex] = temp
+        return arr
+
+
+class Solution:
+    # Insertion-Sort
+    def MySort(self, arr):
+        for i in range(1, len(arr)):
+            pre_index = i - 1
+            curr = arr[i]
+            while pre_index >= 0 and curr < arr[pre_index]:
+                arr[pre_index+1] = arr[pre_index]
+                pre_index -= 1
+            arr[pre_index+1] = curr
+        return arr
 
 
 s = Solution()
