@@ -8,6 +8,19 @@
 5. [算法复杂度速查表](https://mp.weixin.qq.com/s/fGh04uCu0tVX7ttoy2cXYQ)
 6. [30 张图弄懂「图的两种遍历方式」](https://mp.weixin.qq.com/s/hwx6R8z8tkK7q1oSze7uNA)
 
+## Terms
+1. 稳定排序：如果 a 原本在 b 的前面，且 a == b，排序之后 a 仍然在 b 的前面，则为稳定排序。
+
+2. 非稳定排序：如果 a 原本在 b 的前面，且 a == b，排序之后 a 可能不在 b 的前面，则为非稳定排序。
+
+3. 原地排序：原地排序就是指在排序过程中不申请多余的存储空间，只利用原来存储待排数据的存储空间进行比较和交换的数据排序。
+
+4. 非原地排序：需要利用额外的数组来辅助排序。
+
+5. 时间复杂度：一个算法执行所消耗的时间。
+
+6. 空间复杂度：运行完一个算法所需的内存大小。
+
 ![数据结构操作](http://mmbiz.qpic.cn/mmbiz/foPACGrddJ3ib5Tg6K5ak8SZ1ToqAj2AeQvtHAXic0d7rrJy2TsvF9oHcic1fR3oWnLUyCyzfKxd1rGy0KgL08WJw/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 ![大O复杂度图表](http://mmbiz.qpic.cn/mmbiz/foPACGrddJ3ib5Tg6K5ak8SZ1ToqAj2AecXFKfLTicfLDXnE8QTpPpBHrvQkVoKyTuKbesswR4ibc0gEiaekPhAj3Q/640?tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
