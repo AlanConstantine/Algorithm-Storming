@@ -6,6 +6,16 @@ class TreeNode(object):
         self.right = None
 
 
+class TreeNodePre(object):
+    # 代前指针的二叉树节点
+    def __init__(self, val):
+        super().__init__()
+        self.val = val
+        self.pre = None
+        self.left = None
+        self.right = None
+
+
 def pre_traversal(node):
     # root, left, right
     res = []
