@@ -18,6 +18,7 @@ def verityBST(postlist):
     while i < len(postlist)-1:
         if postlist[i] > root:
             break
+        i += 1
 
     if i == 0:
         return False
@@ -27,21 +28,22 @@ def verityBST(postlist):
     return verityBST(lefttree) and verityBST(righttree)
 
 
-a = TreeNode(8)
-b = TreeNode(6)
-c = TreeNode(10)
-d = TreeNode(5)
-e = TreeNode(7)
-f = TreeNode(9)
-g = TreeNode(11)
+# a = TreeNode(8)
+# b = TreeNode(6)
+# c = TreeNode(10)
+# d = TreeNode(5)
+# e = TreeNode(7)
+# f = TreeNode(9)
+# g = TreeNode(11)
 
-a.left = b
-a.right = c
-b.left = d
-b.right = e
-c.left = f
-c.right = g
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.left = f
+# c.right = g
 
-postlist = post_traversal(a)
+postlist = [5, 7, 6, 9, 11, 10, 8]
+# print(postlist)
 
 print(verityBST(postlist))
