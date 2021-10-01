@@ -32,4 +32,29 @@ class Queue(object):
 
 class Stack(object):
     def __init__(self):
-        pass
+        self.items = []
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def push(self, elem):
+        self.items.append(elem)
+
+    def pop(self):
+        elem = self.items.pop()
+        return elem
+
+    def get_len(self):
+        return len(self.items)
+
+    def get_sum(self):
+        sum = 0
+        for item in self.items:
+            sum += item.val
+        return sum
+
+    def show(self):
+        show_ = []
+        for item in self.items:
+            show_.append(item.val)
+        print(show_)

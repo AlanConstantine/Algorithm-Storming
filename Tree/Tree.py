@@ -7,7 +7,7 @@ class TreeNode(object):
 
 
 class TreeNodePre(object):
-    # 代前指针的二叉树节点
+    # 带前指针的二叉树节点
     def __init__(self, val):
         super().__init__()
         self.val = val
