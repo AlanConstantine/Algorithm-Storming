@@ -7,11 +7,24 @@ def convertBST2Linked(root):
     # 中序遍历
     if not root:
         return None
-    convertBST2Linked(root.left)
+
+    current_root = root
+    if root.left:
+        convertBST2Linked(root.left)
+    else:
+        pass
     # do something
     print(root.val)
     convertBST2Linked(root.right)
     pass
+
+
+def convet(preroot, nextroot):
+    leftnext = nextroot.left
+    nextroot.left = preroot
+    rightpre = preroot.right
+    preroot.right = nextroot
+    return leftnext, rightpre
 
 
 a = TreeNode(10)
