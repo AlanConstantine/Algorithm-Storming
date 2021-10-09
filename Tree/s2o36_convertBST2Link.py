@@ -8,23 +8,43 @@ def convertBST2Linked(root):
     if not root:
         return None
 
-    current_root = root
-    if root.left:
-        convertBST2Linked(root.left)
-    else:
-        pass
-    # do something
-    print(root.val)
+    convertBST2Linked(root.left)
+    c.relink(root)
     convertBST2Linked(root.right)
-    pass
 
 
-def convet(preroot, nextroot):
-    leftnext = nextroot.left
-    nextroot.left = preroot
-    rightpre = preroot.right
-    preroot.right = nextroot
-    return leftnext, rightpre
+class Conveter():
+    def __init__(self):
+        self.head = None
+
+    def relink(self, root):
+        if not self.head:
+            root.left = self.head
+            self.head = root
+        else:
+            self.head.right = root
+            root.left = self.head
+            self.head = root
+
+    def gethead(self):
+        return self.head
+
+
+def printhead(root):
+    if not root:
+        return None
+    if root.right:
+        rightval = root.right.val
+    else:
+        rightval = 'None'
+    if root.left:
+        leftval = root.left.val
+    else:
+        leftval = 'None'
+    print(root.val, '--right-->', rightval)
+    print(root.val, '--left--->', leftval)
+
+    printhead(root.left)
 
 
 a = TreeNode(10)
@@ -42,4 +62,7 @@ b.right = d
 e.left = f
 e.right = g
 print(in_traversal(a))
+c = Conveter()
 convertBST2Linked(a)
+head = c.gethead()
+printhead(head)
