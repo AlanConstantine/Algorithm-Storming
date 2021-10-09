@@ -18,7 +18,7 @@ class Stack():
         return len(self.stack)
 
 
-def BTmaxdepth(root):
+def BTmaxdepth1(root):
     maxd = 0
     if not root:
         return maxd
@@ -43,6 +43,15 @@ def BTmaxdepth(root):
     return get_max_depth(root, maxd)
 
 
+def BTmaxdepth(root):
+    if not root:
+        return 0
+    leftd = BTmaxdepth(root.left)
+    rightd = BTmaxdepth(root.right)
+    return leftd+1 if leftd > rightd else rightd+1
+    # 利用return的逆方向计算和传递长度
+
+
 a = TreeNode(1)
 b = TreeNode(2)
 c = TreeNode(3)
@@ -60,4 +69,5 @@ c.right = f
 
 print(pre_traversal(a))
 S = Stack()
+# print(BTmaxdepth1(a))
 print(BTmaxdepth(a))
