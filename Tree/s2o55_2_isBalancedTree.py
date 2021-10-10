@@ -2,16 +2,18 @@ from Tree import TreeNode, pre_traversal
 
 
 def isbalancedtree(root):
-    if not root:
-        return 0, True
+    def balanced(root):
+        if not root:
+            return 0, True
 
-    leftd, unb = isbalancedtree(root.left)
-    rightd, unb = isbalancedtree(root.right)
-    if abs(leftd-rightd) > 1:
-        unb = False
-    else:
-        unb = True
-    return leftd+1 if leftd > rightd else rightd+1, unb
+        leftd, unb = balanced(root.left)
+        rightd, unb = balanced(root.right)
+        if abs(leftd-rightd) > 1:
+            unb = False
+        else:
+            unb = True
+        return leftd+1 if leftd > rightd else rightd+1, unb
+    return balanced(root)[1]
 
 
 a = TreeNode(1)
@@ -34,4 +36,4 @@ g.left = h
 f.right = i
 
 print(pre_traversal(a))
-print(isbalancedtree(a)[1])
+print(isbalancedtree(a))
