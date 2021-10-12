@@ -53,8 +53,22 @@ def in_traversal(node):
 
 
 class Solution:
+    # 要根据BST的特点进行思考🤔
     def lowestCommonAncestor(self, root, p, q):
-        pass
+        if p > q:
+            p, q = q, p
+            # 判断p和q大小，让p时刻保持比q小
+        if root.val > p and root.val > q:
+            # 如果当前节点都大于p和q，那么p和q的公共父节点肯定在当前节点的左边
+            cur = self.lowestCommonAncestor(root.left, p, q)
+        elif root.val < p:
+            # 如果当前节点都小于p和q，那么p和q的公共父节点肯定在当前节点的右边
+            cur = self.lowestCommonAncestor(root.right, p, q)
+        elif root.val >= p and root.val <= q:
+            # 如果当前节点都在p和q之间， 那当前节点肯定是p和q的公共父节点
+            cur = root
+            return cur
+        return cur
 
 
 a = TreeNode(6)
@@ -77,3 +91,4 @@ c.left = f
 c.right = g
 
 print(in_traversal(a))
+print(Solution().lowestCommonAncestor(a, 3, 9).val)
