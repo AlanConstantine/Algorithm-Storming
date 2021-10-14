@@ -12,3 +12,13 @@ class TreeNode(object):
 class Solution:
     def generateTrees(self, n):
         pass
+
+    def generaten(self, i):
+        if i == 1:
+            leaf = TreeNode(1)
+            return
+        if i == 2:
+            leaf2 = TreeNode(2)
+            pass
+        while i > 1:
+            pass
