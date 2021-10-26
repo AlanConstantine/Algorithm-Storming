@@ -14,6 +14,8 @@ def in_traversal(root):
         a += in_traversal(root.right)
     return a
 
+# 思路：关键词是二叉搜索树，且要求等高。那每次生成节点的时候从数组中间开始提取即可
+
 
 class Solution:
     def sortedArrayToBST(self, nums):
