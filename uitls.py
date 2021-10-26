@@ -58,3 +58,10 @@ class Stack(object):
         for item in self.items:
             show_.append(item.val)
         print(show_)
+
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
