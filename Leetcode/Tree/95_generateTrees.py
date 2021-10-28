@@ -11,12 +11,13 @@ class TreeNode(object):
 
 class Solution:
     def generateTrees(self, n):
+        self.series = list(range(n))
         self.answer = []
+        for i in range(n):
+            root = self.getTree(i)
+            self.answer.append(root)
 
-    def generaten(self, series):
-        if not series:
-            return None
-        for i in range(len(series)):
-            newroot = TreeNode(series[i])
-            leftseries = series[:i]
-            rightseries = series[i+1:]
+    def getTree(self, root_val):
+        if root_val == 0:
+            pass
+        leftseries = self.series[:root_val]
