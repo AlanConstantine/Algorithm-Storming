@@ -10,6 +10,8 @@
 # 节点的右子树只包含 大于 当前节点的数。
 # 所有左子树和右子树自身必须也是二叉搜索树。
 
+# 中序遍历的时候判断当前节点是否大于上一个节点即可
+
 # Definition for a binary tree node.
 import math
 
