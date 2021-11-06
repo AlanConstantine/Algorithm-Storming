@@ -21,31 +21,29 @@ def pre_traversal(root):
     res = []
     if root:
         res.append(root.val)
-        res += in_traversal(root.left)
-        res += in_traversal(root.right)
+        res += pre_traversal(root.left)
+        res += pre_traversal(root.right)
     return res
 
 
 class Solution:
     def buildTree(self, preorder, inorder):
-        self.index_ = {inorder[i]: i for i in range(len(inorder))}
-
-    def generate(self, pres, pree, ins, ine, preorder, inorder):
-        # pres: preorder start index
-        # pree: preorder end index
-        # ins: inorder start index
-        # ine: inorder end index
-        if pres > pree:
+        if len(preorder) == 0:
             return None
-        root = TreeNode(preorder[pres])
-        inorder_root_index = self.index_[preorder[pres]]
-        left_tree_size = inorder_root_index - ins
-        root.left = self.generate(
-            pres+1, pres+left_tree_size, ins, inorder_root_index-1)
+
+        root = TreeNode(preorder[0])
+        if len(preorder) == 1:
+            return root
+        inorder_root_index = inorder.index(preorder[0])
+        root.left = self.buildTree(
+            preorder[1: inorder_root_index+1], inorder[: inorder_root_index])
+        root.right = self.buildTree(
+            preorder[inorder_root_index+1:], inorder[inorder_root_index+1:])
+        return root
 
 
-preorder = [3, 9, 20, 15, 7]
-inorder = [9, 3, 15, 20, 7]
+preorder = [1, 2]
+inorder = [2, 1]
 
 S = Solution()
 
