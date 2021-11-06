@@ -1,4 +1,6 @@
 # Definition for a binary tree node.
+# 给定一棵树的前序遍历 preorder 与中序遍历  inorder。请构造二叉树并返回其根节点。
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -27,7 +29,20 @@ def pre_traversal(root):
 class Solution:
     def buildTree(self, preorder, inorder):
         self.index_ = {preorder[i]: i for i in range(len(preorder))}
-        pass
+
+    def generate(self, ls, le, rs, re, preorder, inorder):
+        # ls: left start index
+        # le: left end index
+        # rs: rigth start index
+        # re: right end index
+        root = TreeNode(preorder[0])
+        root_index = self.index_[preorder[0]]
+        le = root_index
+        rs = root_index + 1
+        left_inorder = inorder[ls: le]
+        right_inorder = inorder[rs: re]
+
+        left_
 
 
 preorder = [3, 9, 20, 15, 7]
