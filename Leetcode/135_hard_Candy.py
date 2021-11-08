@@ -14,7 +14,7 @@
 # 输出：5
 # 解释：你可以分别给这三个孩子分发 2、1、2 颗糖果。
 
-
+# 贪心策略： 在每次遍历中仅考虑相邻一侧的大小关系
 class Solution:
     def candy(self, ratings):
         if len(ratings) < 2:
