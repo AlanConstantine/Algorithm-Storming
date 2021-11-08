@@ -17,7 +17,7 @@ class TreeNode:
         self.right = right
 
 
-class Solution:
+class Solution1:
     max_level = 0
     sum_ = 0
 
@@ -34,6 +34,25 @@ class Solution:
                 self.sum_ += root.val
             self.helper(root.left, level+1)  # 记录遍历了第几层
             self.helper(root.right, level+1)
+
+
+class Solution:
+    # 层次遍历
+    def deepestLeavesSum(self, root):
+        sum_ = 0
+        stack = [root]  # 利用stack存储遍历到的层的所有节点， 当前root给根节点只有一个
+        while len(stack) != 0:
+            stack_tmp = []
+            for n in stack:  # 遍历stack存到的节点，并利用stack_tmp来存储遍历到的节点的子节点
+                if n.left:
+                    stack_tmp.append(n.left)
+                if n.right:
+                    stack_tmp.append(n.right)
+            if len(stack_tmp) == 0:  # 当stack_tmp为空的时候，说明当前已经访问到了最深一层
+                sum_ = sum([n.val for n in stack])
+                break
+            stack = stack_tmp
+        return sum_
 
 
 a = TreeNode(1)
