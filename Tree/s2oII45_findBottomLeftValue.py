@@ -31,7 +31,6 @@ class Solution:
         while len(s) != 0:
             s_tmp = []
             for i in range(len(s)):
-                # targ = s[i].left
                 if i == 0:
                     targ = s[i].val
                 if s[i].left:
