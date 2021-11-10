@@ -51,8 +51,8 @@ class Solution:
     def canPlaceFlowers(self, flowerbed, n):
         if n == 0:
             return True
-        newfl = [0] + flowerbed + [0]
-        for i in range(1, len(newfl)-1):
+        newfl = [0] + flowerbed + [0]  # 在花坛首位加上0进行填补来消除边界情况
+        for i in range(1, len(newfl)-1):  # 遍历的时候从1开始到len(newfl)-1前结束这样就避免考虑到了填补位置
             if newfl[i] == 0 and newfl[i-1] == 0 and newfl[i+1] == 0:
                 newfl[i] = 1
                 n -= 1
