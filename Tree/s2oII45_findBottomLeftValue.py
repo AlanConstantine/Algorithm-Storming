@@ -20,6 +20,8 @@ class TreeNode:
         self.right = right
 
 
+# 注意：最左边不代表是左子树
+# 利用层序遍历访问每一层节点，并用一个变量记录访问的每一层的第一个节点
 class Solution:
     def findBottomLeftValue(self, root: TreeNode) -> int:
         if not root.left and not root.right:
