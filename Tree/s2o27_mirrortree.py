@@ -14,6 +14,18 @@ def mirror_tree(node):
         mirror_tree(node.right)
 
 
+class Solution:
+    def mirrorTree(self, root: TreeNode) -> TreeNode:
+        if not root:
+            return None
+        if not root.left and not root.right:
+            return root
+        root.left = self.mirrorTree(root.left)
+        root.right = self.mirrorTree(root.right)
+        root.left, root.right = root.right, root.left
+        return root
+
+
 a = TreeNode(8)
 b = TreeNode(6)
 c = TreeNode(10)
