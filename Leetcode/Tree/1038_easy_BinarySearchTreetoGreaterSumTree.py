@@ -27,6 +27,26 @@ class Solution:
         return s
 
 
+# 右中左遍历累加节点值
+
+class Solution:
+    sum_ = 0
+
+    def bstToGst(self, root):
+        """
+        :type root: TreeNode
+        :rtype: TreeNode
+        """
+        def help(root):
+            if root:
+                self.bstToGst(root.right)
+                self.sum_ += root.val
+                root.val = self.sum_
+                self.bstToGst(root.left)
+        help(root)
+        return root
+
+
 a = TreeNode(0)
 b = TreeNode(1)
 c = TreeNode(2)
@@ -49,3 +69,4 @@ h.right = i
 print(in_traversal(e))
 S = Solution()
 S.bstToGst(e)
+print(in_traversal(e))
