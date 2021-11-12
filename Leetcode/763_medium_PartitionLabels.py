@@ -11,6 +11,9 @@
 # 每个字母最多出现在一个片段中。
 # 像 "ababcbacadefegde", "hijhklij" 的划分是错误的，因为划分的片段数较少。
 
+# 注意 在处理数组前，统计一遍信息（如频率、个数、第一次出现位置、最后一次出现位置等）可
+# 以使题目难度大幅降低。
+
 class Solution:
     def partitionLabels(self, s):
         if not s:
