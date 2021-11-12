@@ -22,7 +22,7 @@ class Solution:
             return root
         root.left = self.mirrorTree(root.left)
         root.right = self.mirrorTree(root.right)
-        root.left, root.right = root.right, root.left
+        root.left, root.right = root.right, root.left  # 递归后序遍历，并针对当前节点的左右节点进行交换
         return root
 
 
