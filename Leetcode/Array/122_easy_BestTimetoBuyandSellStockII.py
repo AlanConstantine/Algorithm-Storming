@@ -47,9 +47,9 @@ class Solution1:
 
 class Solution:
     def maxProfit(self, prices) -> int:
-        res = 0
+        res = 0  # 保存价值
         for i in range(1, len(prices)):
-            res += max(0, prices[i] - prices[i-1])
+            res += max(0, prices[i] - prices[i-1])  # 若区间产生的价值大于0，则加入到res中
         return res
 
 
