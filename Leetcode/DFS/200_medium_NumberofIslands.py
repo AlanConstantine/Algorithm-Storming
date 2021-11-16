@@ -27,12 +27,13 @@
 
 class Solution:
     def numIslands(self, grid):
-
+        # 利用dfs递归查找周边的岛屿
         def dfs(grid, i, j):
             if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[0]):
                 return
             if grid[i][j] == "0":
                 return
+            # 如果不等于0则将岛屿淹没
             grid[i][j] = "0"
             dfs(grid, i-1, j)  # 上
             dfs(grid, i+1, j)  # 下
