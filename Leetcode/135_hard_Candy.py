@@ -31,7 +31,8 @@ class Solution:
         while i-1 >= 0:
             # 从右向左遍历，如果左边小孩评分大于当前小孩
             if ratings[i] < ratings[i-1]:
-                res[i-1] = max(res[i-1], res[i]+1)  # 则再判断左边的小孩的糖果数是否已经大于当前小孩的
+                # 则再判断左边的小孩的糖果数是否已经大于当前小孩的, 这步判断很关键，用来控制最少的发糖果数量
+                res[i-1] = max(res[i-1], res[i]+1)
             i -= 1
         return sum(res)
 
