@@ -21,7 +21,9 @@ class Solution:
             return res
         if n == 1:
             return [TreeNode(0)]
-        for i in range(1, n, 2):  # 递归思路，不需要关心发生了什么，只关系把n分解成两个子问题传递给下一个任务即可
+        for i in range(1, n, 2):
+            # 遍历每一个数字轮流当根节点
+            # 递归思路，不需要关心发生了什么，只关系把n分解成两个子问题传递给下一个任务即可
             lefts = self.allPossibleFBT(i)  # 给i数字个给左子树
             # 剩下n-i-1则为右子树的, -1是因为有一个是要用来作为根节点的
             rights = self.allPossibleFBT(n-i-1)
