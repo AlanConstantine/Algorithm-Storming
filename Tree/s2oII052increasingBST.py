@@ -12,26 +12,18 @@ class TreeNode:
 
 
 class Solution:
+    p = TreeNode(-1)
+
     def increasingBST(self, root: TreeNode) -> TreeNode:
-        if not root:
-            return None
+        res = self.p
 
-        def help(root):
-            q = []
+        def inorder(root):
             if root:
-                q += help(root.left)
-                q.append(root)
-                q += help(root.right)
-            return q
-
-        q = help(root)
-
-        newtree = q.pop(0)
-        newroot = newtree
-        newroot.left = None
-
-        while q:
-            newtree.right = q.pop(0)
-            newtree.left = None
-            newtree = newtree.right
-        return newroot
+                inorder(root.left)
+                self.p.right = root
+                root.left = None
+                self.p = root
+                inorder(root.right)
+            return None
+        inorder(root)
+        return res.right
