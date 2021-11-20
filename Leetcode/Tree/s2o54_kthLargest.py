@@ -46,10 +46,10 @@ class Solution:
             if not root:
                 return
             dfs(root.right)
-            if self.k == 0:
+            if self.k == 0:  # 如果k为0，则已满足要求直接返回，不需要再迭代，这里判断0的原因是为了不在继续递归
                 return
-            self.k -= 1
-            if self.k == 0:
+            self.k -= 1  # 如果k不为0，则k-1
+            if self.k == 0:  # 判断k是否满足0，这里是为了判断节点是否符合要求
                 self.res = root.val
             dfs(root.left)
         dfs(root)
