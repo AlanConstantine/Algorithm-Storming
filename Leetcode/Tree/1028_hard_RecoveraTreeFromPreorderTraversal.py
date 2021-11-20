@@ -53,7 +53,8 @@ class Solution:
     def recoverFromPreorder(self, traversal: str):
         values = traversal.split("-")
         root = TreeNode(int(values[0]))
-        nodes = [root]  # 利用nodes来记录先访问的左节点，方便后面的节点来找父节点
+        # 利用nodes来记录先访问的左节点，方便后面的节点来找父节点,当左侧节点访问结束后访问右侧节点时用右侧节点替换左侧节点的位置
+        nodes = [root]
         count = 0
         for val in values[1:]:
             if val == "":
