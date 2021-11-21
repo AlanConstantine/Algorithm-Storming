@@ -21,9 +21,45 @@ class TreeNode:
         self.right = right
 
 
+class Solution1:
+    def flatten(self, root: TreeNode) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        if not root:
+            return
+
+        def dfs(root):
+            res = []
+            if root:
+                res.append(root)
+                res += dfs(root.left)
+                res += dfs(root.right)
+            return res
+
+        s = dfs(root)
+        root = s.pop(0)
+        while s:
+            root.right = s.pop(0)
+            root.left = None
+            root = root.right
+
+
 class Solution:
     def flatten(self, root: TreeNode) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
-        pass
+        if not root:
+            return None
+        s = [root]
+        pre = TreeNode(0)
+        while s:
+            cur = s.pop()
+            if cur.right:
+                s.append(cur.right)  # 因为使用了pop(),先进后出，所以先把right放进栈里
+            if cur.left:
+                s.append(cur.left)
+            pre.right = cur
+            pre.left = None
+            pre = cur
