@@ -22,4 +22,17 @@ class TreeNode:
 
 class Solution:
     def sumRootToLeaf(self, root: TreeNode) -> int:
-        pass
+        self.res = []
+        self.temp = ''
+
+        def dfs(root):
+            if root:
+                self.temp += str(root.val)
+                if not root.left and not root.right:
+                    self.res.append(self.temp)
+                    self.temp = self.temp[:-1]
+                    return
+                dfs(root.left)
+                dfs(root.right)
+                self.temp = self.temp[:-1]
+        dfs(root)
