@@ -36,3 +36,7 @@ class Solution:
                 dfs(root.right)
                 self.temp = self.temp[:-1]
         dfs(root)
+        ans = 0
+        for v in self.res:
+            ans += int(v, 2)
+        return ans
