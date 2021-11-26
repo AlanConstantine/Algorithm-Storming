@@ -25,7 +25,7 @@ class TreeNode:
         self.right = right
 
 
-class Solution:
+class Solution1:
     def sumNumbers(self, root: TreeNode) -> int:
         if not root:
             return 0
@@ -47,6 +47,18 @@ class Solution:
             return
         dfs(root)
         return sum(self.ans)
+
+
+class Solution:
+    def sumNumbers(self, root: TreeNode) -> int:
+        def dfs(root, sum):
+            if not root:
+                return 0
+            if not root.left and not root.right:
+                return sum*10 + root.val  # 若子树为空，则返回当前计算
+            # 否则把当前计算传到下一层
+            return dfs(root.left, sum*10+root.val) + dfs(root.right, sum*10+root.val)
+        return dfs(root, 0)
 
 
 a = TreeNode(4)
