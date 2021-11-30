@@ -7,7 +7,7 @@ class TreeNode:
 
 
 class Solution:
-    def largestValues(self, root: TreeNode) -> List[int]:
+    def largestValues(self, root: TreeNode):
         if not root:
             return []
         ans = []
