@@ -26,7 +26,8 @@
 # 链接：https://leetcode-cn.com/problems/house-robber
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-class Solution:
+# 向后考虑打劫
+class Solution1:
 
     def rob(self, nums) -> int:
         if not nums:
@@ -48,6 +49,26 @@ class Solution:
             h -= 1
 
         return max(self.res)
+
+# 向前考虑打劫
+
+
+class Solution:
+
+    def rob(self, nums) -> int:
+        if not nums:
+            return nums
+        size = len(nums)
+        if size == 1:
+            return nums[0]
+
+        dp = [0] * size  # dp为记录最优解的数组
+        dp[0] = nums[0]  # 第一个房子的最优解是自己，因为向前考虑的话前面没有房子
+        dp[1] = max(nums[1], dp[0])  # 第二个房子的最优解是考虑自己和前一个房子取最优解
+        for h in range(2, size):
+            # 后续的房子只需要考虑自己+前前房子的最优解或者前一个房子的最优解
+            dp[h] = max(dp[h-2]+nums[h], dp[h-1])
+        return dp[-1]
 
 
 nums = [183, 219, 57, 193, 94, 233, 202, 154, 65, 240, 97, 234, 100, 249, 186, 66, 90, 238,
