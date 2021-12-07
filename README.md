@@ -7,6 +7,7 @@
 4. [python的面试题](https://github.com/kenwoodjw/python_interview_question)
 5. [算法复杂度速查表](https://mp.weixin.qq.com/s/fGh04uCu0tVX7ttoy2cXYQ)
 6. [30 张图弄懂「图的两种遍历方式」](https://mp.weixin.qq.com/s/hwx6R8z8tkK7q1oSze7uNA)
+7. [代码随想录](https://programmercarl.com/)
 
 ## Terms
 1. 稳定排序：如果 a 原本在 b 的前面，且 a == b，排序之后 a 仍然在 b 的前面，则为稳定排序。
