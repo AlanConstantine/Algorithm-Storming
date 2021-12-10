@@ -35,6 +35,8 @@
 
 
 # Definition for a binary tree node.
+
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -42,7 +44,7 @@ class TreeNode:
         self.right = None
 
 
-class Solution:
+class Solution1:
     def inorderSuccessor(self, root: TreeNode, p: TreeNode) -> TreeNode:
         if not root or not p:
             return None
@@ -53,10 +55,38 @@ class Solution:
             if not root:
                 return None
             dfs(root.left)
-            if root.val > p.val:
+            if root.val > p.val and not self.ans:
                 self.ans = root
                 return
             dfs(root.right)
 
         dfs(root)
         return self.ans
+
+
+class Solution:
+    def inorderSuccessor(self, root: TreeNode, p: TreeNode) -> TreeNode:
+        result = root
+        while root:
+            if root.val > p.val:
+                result = root
+                root = root.left
+            else:
+                root = root.right
+        return result if result.val > p.val else None
+
+
+a = TreeNode(5)
+b = TreeNode(3)
+c = TreeNode(6)
+d = TreeNode(2)
+e = TreeNode(1)
+f = TreeNode(4)
+
+a.left = b
+a.right = c
+b.left = d
+b.right = f
+d.left = e
+
+print(Solution().inorderSuccessor(a, f).val)
