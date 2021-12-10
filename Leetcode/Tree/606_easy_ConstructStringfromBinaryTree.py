@@ -46,7 +46,7 @@ class TreeNode:
         self.right = right
 
 
-class Solution:
+class Solution1:
     def tree2str(self, root) -> str:
         if not root:
             return ''
@@ -66,6 +66,24 @@ class Solution:
             return '{}({})({})'.format(head, L, R)
         return dfs(root)
 
+
+class Solution:
+    def tree2str(self, root) -> str:
+        if not root:
+            return ''
+
+        def dfs(root):
+            if not root:
+                return ''
+            head = str(root.val)
+            if not root.left and not root.right:
+                return head
+            if not root.left and root.right:
+                return '{}()({})'.format(head, dfs(root.right))
+            if root.left and not root.right:
+                return '{}({})'.format(head, dfs(root.left))
+            return '{}({})({})'.format(head, dfs(root.left), dfs(root.right))
+        return dfs(root)
 # 示例1：
 # 输入: root = [1,3,2,5,3,null,9]
 # 解释:
