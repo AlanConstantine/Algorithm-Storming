@@ -29,7 +29,7 @@ class Solution:
         def dfs(root):
             if not root:
                 return []
-            if not root.left and not root.right:  # 没有左右子节点说明当前节点为叶子结点，返回深度1
+            if not root.left and not root.right:  # 没有左右子节点说明当前节点为叶子结点，返回当前叶子结点对于其父节点的深度，即为1
                 return [1]
             L = dfs(root.left)  # 获取左子树的叶子结点深度
             R = dfs(root.right)  # 获取右子树的叶子结点深度
