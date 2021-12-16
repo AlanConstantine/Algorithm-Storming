@@ -28,5 +28,24 @@
 
 class Solution:
     def verifyPostorder(self, postorder) -> bool:
-        inorder = sorted(postorder)
-        inindex = {val: i for i, val in enumerate(inorder)}
+
+        def help(postorder, start, end):
+            if start >= end:
+                return True
+            p = start
+            while postorder[p] < postorder[end]:  # 用p获取左子树
+                p += 1
+            mid = p
+            while postorder[p] > postorder[end] and p != end:  # 用p获取右子树
+                p += 1
+
+            if p < end:  # 当不满足BST的后序时，p在遍历右子树时肯定会提前结束，造成p<end，即不满足BST后序的条件
+                return False
+            return help(postorder, start, mid-1) and help(postorder, mid, end-1)
+
+        return help(postorder, 0, len(postorder)-1)
+
+
+# pos = [1, 2, 5, 10, 6, 9, 4, 3]
+pos = [1, 3, 2, 6, 5]
+print(Solution().verifyPostorder(pos))
