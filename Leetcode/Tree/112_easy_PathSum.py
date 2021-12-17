@@ -43,6 +43,21 @@ class Solution:
         return self.flag
 
 
+class Solution:
+    def hasPathSum(self, root, targetSum: int) -> bool:
+        if not root:
+            return None
+
+        def dfs(root, cur):
+            if not root:
+                return False
+            if not root.left and not root.right:
+                return targetSum == cur+root.val
+            return dfs(root.left, cur+root.val) or dfs(root.right, cur+root.val)
+
+        return dfs(root, 0)
+
+
 a = TreeNode(5)
 b = TreeNode(4)
 c = TreeNode(11)
