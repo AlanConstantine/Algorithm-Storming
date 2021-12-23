@@ -56,7 +56,7 @@ class Solution:
         maxwidth = 0
         while s:
             size = len(s)
-            width = s[-1].val - s[0].val+1
+            maxwidth = max(maxwidth, s[-1].val - s[0].val+1)
             for _ in range(size):
                 n = s.pop(0)
                 if n.left:
@@ -65,7 +65,6 @@ class Solution:
                 if n.right:
                     s.append(n.right)
                     n.right.val = 2*n.val+2  # 左节点的值为父节点的值*2+2
-            maxwidth = max(maxwidth, width)
         return maxwidth
 
 
