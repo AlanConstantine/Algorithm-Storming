@@ -11,6 +11,9 @@
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 # Definition for a binary tree node.
+import collections
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -20,4 +23,20 @@ class TreeNode:
 
 class Solution:
     def pathSum(self, root: TreeNode, targetSum: int) -> int:
-        pass
+        if not root:
+            return 0
+        self.prefix = collections.defaultdict(int)
+        self.prefix[0] = 1
+
+        def dfs(root, curr):
+            if not root:
+                return 0
+            curr += root.val
+            res = self.prefix[curr-targetSum]
+            self.prefix[curr] += 1
+            res += dfs(root.left, curr)
+            res += dfs(root.right, curr)
+            self.prefix[curr] -= 1
+            return res
+
+        return dfs(root, 0)
