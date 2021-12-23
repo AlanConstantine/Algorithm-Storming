@@ -53,17 +53,17 @@ class Solution:
         def dfs(root):
             if not root:
                 return 0
-            leftc = dfs(root.left)
-            rightc = dfs(root.right)
+            leftc = dfs(root.left)  # 获取左树结果
+            rightc = dfs(root.right)  # 获取右树结果
             if root.left and root.left.val == root.val:
-                leftc += 1
+                leftc += 1  # 若左树值等于当前节点，左树加一
             else:
-                leftc = 0
+                leftc = 0  # 否则左树归0
             if root.right and root.right.val == root.val:
                 rightc += 1
             else:
                 rightc = 0
-            self.maxpath = max(self.maxpath, leftc+rightc)
+            self.maxpath = max(self.maxpath, leftc+rightc)  # maxpath记录最大结果值
             return max(leftc, rightc)
 
         dfs(root)
