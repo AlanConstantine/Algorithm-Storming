@@ -35,6 +35,9 @@
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 # Definition for a binary tree node.
+from _typeshed import Self
+
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -42,7 +45,7 @@ class TreeNode:
         self.right = None
 
 
-class Solution:
+class Solution1:
     def isSubStructure(self, A: TreeNode, B: TreeNode) -> bool:
         if not A and not B:
             return False
@@ -51,14 +54,11 @@ class Solution:
         self.res = False
 
         def dfs(A, B):
-            if not B and not A:
+            if not B:
                 return True
-            if not B and A:
-                return True
-            if B and not A:
+            if not A:
                 return False
-            if B and A:
-                return B.val == A.val and dfs(A.left, B.left) and dfs(A.right, B.right)
+            return B.val == A.val and dfs(A.left, B.left) and dfs(A.right, B.right)
 
         def help(root):
             if not root:
@@ -70,6 +70,28 @@ class Solution:
 
         help(A)
         return self.res
+
+
+class Solution:
+    def isSubStructure(self, A: TreeNode, B: TreeNode) -> bool:
+        result = False
+        if A and B:
+            if A.val == B.val:  # 递归查找匹配入口
+                result = self.comp(A, B)
+            if not result:  # 利用判断节省递归时间
+                result = self.isSubStructure(A.left, B)
+            if not result:
+                result = self.isSubStructure(A.right, B)
+        return result
+
+    def comp(self, A, B):
+        if not B:
+            return True
+        if not A:
+            return False
+        if A.val != B.val:
+            return False
+        return self.comp(A.left, B.left) and self.comp(A.right, B.right)
 
 
 a = TreeNode(1)
