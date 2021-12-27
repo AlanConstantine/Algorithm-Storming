@@ -41,7 +41,7 @@
 # 对于一棵树：
 # 非空节点一定有1个入度和2个出度（若子节点为空则连接#也可以表示出度）
 # 对于空节点，则只有1个入度没有出度
-class Solution:
+class Solution1:
     def isValidSerialization(self, preorder: str) -> bool:
         if preorder == '#':  # 特例
             return True
@@ -64,3 +64,17 @@ class Solution:
             if i != len(preorder) - 1 and indegree >= outdegree:  # 除了最后完成所有遍历，入度应该一直保持小于出度
                 return False
         return indegree == outdegree  # 完成遍历后判断入度是否等于出度
+
+# 节点消融
+# https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree/solution/pai-an-jiao-jue-de-liang-chong-jie-fa-zh-66nt/
+
+
+class Solution:
+    def isValidSerialization(self, preorder: str) -> bool:
+        s = []
+        for node in preorder.split(','):
+            s.append(node)
+            while len(s) >= 3 and s[-1] == s[-2] == '#' and s[-3] != '#':
+                s.pop(), s.pop(), s.pop()
+                s.append('#')
+        return len(s) == 1 and s[0] == '#'
