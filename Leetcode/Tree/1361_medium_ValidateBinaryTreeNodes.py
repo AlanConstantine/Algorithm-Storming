@@ -15,6 +15,11 @@
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 class Solution1:  # fail
+    # 失败的案例
+    # n = 4
+    # leftChild = [1, 0, 3, -1]
+    # rightChild = [-1, -1, -1, -1]
+    # 没考虑同时出现环图和两颗树的情况
     def validateBinaryTreeNodes(self, n: int, leftChild, rightChild) -> bool:
         if n == 1 and leftChild[0] != rightChild[0]:
             return False
