@@ -30,7 +30,7 @@
 # 链接：https://leetcode-cn.com/problems/fibonacci-number
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-
+# 传统递归
 class Solution1:
     def fib(self, n: int) -> int:
         if n == 0:
@@ -40,7 +40,28 @@ class Solution1:
         else:
             return self.fib(n-1) + self.fib(n-2)
 
+# 动态规划
+
+
+class Solution2:
+    def fib(self, n: int) -> int:
+        if n < 2:
+            return n
+
+        sub, curr, temp = 0, 1, 0  # 设置初始的结果和临时变量
+        for i in range(2, n+1):
+            temp = curr
+            curr = curr + sub
+            sub = temp
+        return curr
+
 
 class Solution:
     def fib(self, n: int) -> int:
-        pass
+        if n < 2:
+            return n
+
+        sub, curr = 0, 1  # 设置初始的结果和临时变量
+        for i in range(2, n+1):
+            sub, curr = curr, curr + sub
+        return curr
