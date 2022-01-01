@@ -33,8 +33,10 @@
 # if n=1, return 1;
 # if n=2, return 2;
 # if n=3, return 3.
+# https://leetcode-cn.com/problems/climbing-stairs/
 
-class Solution(object):
+
+class SolutionI(object):
     def __init__(self):
         self.p = {}
 
@@ -73,6 +75,24 @@ class SolutionII(object):
             two_step_way = all_way  # 当前状态转移给上状态
         return all_way
 
+# 第n阶台阶只可能是从上一次跨台阶上来的
+# 而上一次跨台阶可能是跨了1阶上到当前台阶，也可能是跨了2阶台阶到当前台阶
+# 所以当前台阶的跨法是：f(n)=f(n-1)+f(n-2)
+
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n < 4:
+            return n
+        s2 = 2
+        s3 = 3
+        sn = 0
+        for i in range(3, n):
+            sn = s3 + s2
+            s2 = s3
+            s3 = sn
+        return sn
+
 
 s = Solution()
-print(s.climbStairs(5))
+print(s.climbStairs(12))
