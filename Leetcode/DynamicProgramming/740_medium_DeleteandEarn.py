@@ -38,13 +38,22 @@
 
 class Solution:
     def deleteAndEarn(self, nums) -> int:
-        res = 0
-        earns = {}
-        for i in range(len(nums)):
-            getearn = nums[i]
-            if getearn in earns:
-                res = max(res, earns[getearn])
-            if getearn - 1 in earns:
-                pass
-            if getearn + 1 in earns:
-                pass
+        maxv = max(nums)
+        earns = [0] * (maxv+1)
+        for i in nums:
+            earns[i] += 1
+        # 按照nums的值构造earns数组，earns数组的下标表示nums中的earn，下标对应的值则为earn出现的次数
+        # 在earns上构建动态规划：
+        # 如果考虑下标i，则不能考虑相邻的下标。即i-1和i+1，则问题就和打家劫舍相似
+        # 且下标i的收益为earns[i]*i，因为earns[i]表示在i在nums中出现次数，i表示nums中的收益
+        size = len(earns)
+        dp = [0] * size
+        dp[0] = earns[0]
+        dp[1] = max(earns[0], earns[1]*1)
+        for i in range(2, size):
+            dp[i] = max(dp[i-1]+0, dp[i-2]+earns[i]*i)
+        return dp[-1]
+
+
+a = [2, 2, 3, 3, 3, 4]
+print(Solution().deleteAndEarn(a))
