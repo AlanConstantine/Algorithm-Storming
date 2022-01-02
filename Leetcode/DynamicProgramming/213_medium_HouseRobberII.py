@@ -28,7 +28,7 @@
 # 链接：https://leetcode-cn.com/problems/house-robber-ii
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-class Solution:
+class Solution1:
     def rob(self, nums) -> int:
         if not nums:
             return nums
@@ -50,6 +50,36 @@ class Solution:
         # 第二情况：打劫最后一家，第一家不打劫
         res2 = help(nums[1:])
         return max(res1, res2)
+
+
+class Solution:
+    def rob(self, nums) -> int:
+        if len(nums) == 0:
+            return 0
+        if len(nums) == 1:
+            return nums[0]
+        if len(nums) == 2:
+            return max(nums[0], nums[1])
+        # 分情况讨论
+        res1 = nums[1:]  # 第一种，不打劫第一家，打劫最后一家
+        res2 = nums[:-1]  # 第二种，打劫第一家，但是不打劫最后一家
+
+        def help(nums):
+            # 参考198常规的打家劫舍
+            if len(nums) == 0:
+                return 0
+            if len(nums) == 1:
+                return nums[0]
+            if len(nums) == 2:
+                return max(nums[0], nums[1])
+            size = len(nums)
+            dp = [0] * size
+            dp[0] = nums[0]
+            dp[1] = max(nums[0], nums[1])
+            for i in range(2, size):
+                dp[i] = max(dp[i-1]+0, dp[i-2]+nums[i])
+            return dp[-1]
+        return max(help(res1), help(res2))  # 对比两种情况返回最优解
 
 
 print(Solution().rob([0, 0]))
