@@ -53,7 +53,7 @@ class Solution1:
 # 向前考虑打劫
 
 
-class Solution:
+class Solution2:
 
     def rob(self, nums) -> int:
         if not nums:
@@ -69,6 +69,22 @@ class Solution:
             # 后续的房子只需要考虑自己+前前房子的最优解或者前一个房子的最优解
             dp[h] = max(dp[h-2]+nums[h], dp[h-1])
         return dp[-1]
+
+
+class Solution:
+    def rob(self, nums) -> int:
+        if len(nums) == 1:
+            return nums[0]
+        if len(nums) == 2:
+            return max(nums[0], nums[1])
+        n = len(nums)
+        dp = [0] * n  # 构建存储数组，存储打劫第i个房子的最有解
+        dp[0] = nums[0]  # 第一个房子的最优解就是自己
+        dp[1] = max(nums[0], nums[1])  # 第二个房子就是看前一个房子和当前房子的最优解
+        for i in range(2, n):
+            # 如果打劫上一个房子，那当前房子就不打劫，则+0，如果打劫前前一个房子，则可以打劫当前房子所以要加上当前房子的收益
+            dp[i] = max(dp[i-1]+0, dp[i-2]+nums[i])
+        return dp[-1]  # 打劫完后返回最后一个房子的解
 
 
 nums = [183, 219, 57, 193, 94, 233, 202, 154, 65, 240, 97, 234, 100, 249, 186, 66, 90, 238,
