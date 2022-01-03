@@ -57,7 +57,7 @@ class Solution1:
             if sum(dp[i:i+steps+1]) == len(dp[i:i+steps+1]):
                 continue
             for j in range(i, i+steps+1):
-                dp[j] = 1
+                dp[j] = 1  # 将可访问的范围设为1
         return sum(dp) == size
 
 
