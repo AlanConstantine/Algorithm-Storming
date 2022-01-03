@@ -26,8 +26,8 @@
 # 链接：https://leetcode-cn.com/problems/maximum-subarray
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-class Solution1:
-    # 动态规划
+class Solution2:
+    # 动态规划2
     def maxSubArray(self, nums) -> int:
         size = len(nums)
         if size == 0:
@@ -41,14 +41,15 @@ class Solution1:
         # 和上一个下标进行连续，则结果为dp[i-1]+nums[i]
         # 不和上一个下标进行连续，新起一个连续数组,则结果为nums[i]
         # 对比两种状态的结果
-        dp[1] = max(nums[1], dp[0]+nums[1])
-        for i in range(2, size):
+        maxv = dp[0]
+        for i in range(1, size):
             dp[i] = max(nums[i], dp[i-1]+nums[i])
-        return max(dp)
+            maxv = max(maxv, dp[i])
+        return maxv
 
 
-class Solution2:
-    # 动态规划2
+class Solution1:
+    # 动态规划1
     def maxSubArray(self, nums) -> int:
         size = len(nums)
         if size == 0:
@@ -66,6 +67,23 @@ class Solution2:
         for i in range(1, size):
             dp[i] = max(nums[i], dp[i-1]+nums[i])
         return max(dp)
+
+
+class Solution:
+    # 动态规划3
+    # 优化空间，即当前下标只和上一个下标有关系，那就用一个变量pre来存储上一个下标的结果即可
+    # 不需要再构建一个新的数组存储
+    def maxSubArray(self, nums) -> int:
+        size = len(nums)
+        if size == 1:
+            return nums[0]
+        pre = nums[0]  # 初始化上一位的最大和，即就是第一位状态
+        maxv = nums[0]  # 第一位的最大和就是自己
+        for i in range(1, size):
+            curr = max(nums[i], pre+nums[i])  # 对比仅当前的结果和考虑当前+上一个状态的结果
+            maxv = max(curr, maxv)
+            pre = curr
+        return maxv
 
 
 class Solution:
