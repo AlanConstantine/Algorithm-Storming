@@ -65,8 +65,8 @@ class Solution1:
 
 class Solution:
     def maxSubarraySumCircular(self, nums) -> int:
-        # 最大的环形子数组和 = max(最大子数组和，数组总和-最小子数组和)
-        # https://leetcode-cn.com/problems/maximum-sum-circular-subarray/solution/wo-hua-yi-bian-jiu-kan-dong-de-ti-jie-ni-892u/
+        # 最大的环形子数组和 = max(最大子数组和（非环形子数组），数组总和-最小子数组和（环形子数组）)
+        # 证明：https://leetcode-cn.com/problems/maximum-sum-circular-subarray/solution/wo-hua-yi-bian-jiu-kan-dong-de-ti-jie-ni-892u/
         totalsum = 0
         maxsum = nums[0]
         minsum = nums[0]
