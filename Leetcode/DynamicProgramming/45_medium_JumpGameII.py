@@ -37,7 +37,7 @@ class Solution1:
         dp[0] = 0
         for i in range(size):
             for j in range(i):
-                max_index = j + nums[j]  # 检查当前元素之前的所有能到达的最大位置
+                max_index = j + nums[j]  # 检查当前元素之前的所有元素能到达的最大位置
                 if max_index >= i:  # 只有最大位置大于当前下标的时候才进行比较
                     dp[i] = min(dp[i], dp[j]+1)  # 依次对比取最小值
         return dp[-1]
