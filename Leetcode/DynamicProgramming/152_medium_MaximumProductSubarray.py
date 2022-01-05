@@ -21,7 +21,7 @@
 # 链接：https://leetcode-cn.com/problems/maximum-product-subarray
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-class Solution:
+class Solution1:
     # 类似53题，但是需要考虑负负得正的情况，所以在找最大值的同时也要找最小值，因为最小值可能为负数且再乘上一个负数就为正数且有机会成且最大值
     def maxProduct(self, nums) -> int:
         if len(nums) == 1:
@@ -41,10 +41,24 @@ class Solution:
         return maxv
 
 
-nums = [2, 3, -2, 4]
-nums = [-2, 0, -1]
-nums = [-2, -1, 3, 0]
-nums = [-2]
+class Solution:
+    # 优化空间（其实没差）
+    def maxProduct(self, nums) -> int:
+        maxF = nums[0]
+        minF = nums[0]
+        ans = nums[0]
+        for n in nums[1:]:
+            maxv, minv = maxF, minF
+            maxF = max(maxv*n, n, minv*n)
+            minF = min(minv*n, n, maxv*n)
+            ans = max(maxF, ans)
+        return ans
 
+
+nums = [2, 3, -2, 4]
+# nums = [-2, 0, -1]
+# nums = [-2, -1, 3, 0]
+# nums = [-2]
+nums = [-4, -3, -2]
 
 print(Solution().maxProduct(nums))
