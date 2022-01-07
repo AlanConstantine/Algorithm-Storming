@@ -26,7 +26,21 @@
 # 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-class Solution:
+
+class Solution1:
+    # 简单动态规划
+    def maxProfit(self, prices) -> int:
+        size = len(prices)
+        dp = [0] * size
+        dp[0] = prices[0]  # dp存储每个下标以及起之前前的最小值
+        res = 0
+        for i in range(1, size):
+            res = max(res, prices[i]-dp[i-1])
+            dp[i] = min(prices[i], dp[i-1])
+        return res
+
+
+class Solution2:
     # 双指针（也可以理解成优化空间后的动态规划）
     def maxProfit(self, prices) -> int:
         res = 0  # res存储最大的差值，即利润
@@ -34,6 +48,17 @@ class Solution:
         for i in range(1, len(prices)):
             res = max(prices[i]-premin, res)  # 求当前下标与存储的最小值的差，即利润，并于当前最大利润对比
             premin = min(premin, prices[i])  # 维护存储的最小值
+        return res
+
+
+class Solution:
+    # 双指针（也可以理解成优化空间后的动态规划）
+    def maxProfit(self, prices) -> int:
+        res = 0  # res存储最大的差值，即利润
+        premin = prices[0]  # 存储最小的值，即入手时间
+        for curr in prices[1:]:
+            res = max(curr-premin, res)  # 求当前下标与存储的最小值的差，即利润，并于当前最大利润对比
+            premin = min(premin, curr)  # 维护存储的最小值
         return res
 
 
