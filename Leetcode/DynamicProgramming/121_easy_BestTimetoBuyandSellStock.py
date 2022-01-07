@@ -52,7 +52,6 @@ class Solution2:
 
 
 class Solution:
-    # 双指针（也可以理解成优化空间后的动态规划）
     def maxProfit(self, prices) -> int:
         res = 0  # res存储最大的差值，即利润
         premin = prices[0]  # 存储最小的值，即入手时间
