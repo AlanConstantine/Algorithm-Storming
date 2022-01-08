@@ -34,8 +34,8 @@
 class Solution:
     def maxProfit(self, prices, fee: int) -> int:
         size = len(prices)
-        keep = [0] * size  # 手上持有股票时每天的收益
-        no = [0] * size  # 手上没有持有股票时每天的收益
+        keep = [0] * size  # 手上持有股票时每天最佳收益
+        no = [0] * size  # 手上没有持有股票时每天最佳收益
         keep[0] = -1 * prices[0]
         for i in range(1, size):
             # 当天手上持有股票：1:前一天就持有，当天不操作；2:前一天没有，当天买入。对比两种情况的最佳收益（买入股票不收手续费）
