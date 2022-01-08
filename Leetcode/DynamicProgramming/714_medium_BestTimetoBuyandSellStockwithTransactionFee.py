@@ -31,7 +31,7 @@
 # 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-class Solution:
+class Solution1:
     def maxProfit(self, prices, fee: int) -> int:
         size = len(prices)
         keep = [0] * size  # 手上持有股票时每天最佳收益
@@ -43,6 +43,17 @@ class Solution:
             # 当天手上没有持有股票：1:前一天本来就没有持有，当天不操作；2:前一天持有，当天卖出并扣除手续费。对比两种情况
             no[i] = max(no[i-1], keep[i-1]+prices[i]-fee)
         return no[-1]  # 手上没有持有股票的收益肯定比持有的多
+
+
+class Solution:
+    # 优化空间
+    def maxProfit(self, prices, fee: int) -> int:
+        dp = [0, -prices[0]]
+        for i in range(1, len(prices)):
+            currkeep = max(dp[1], dp[0]-prices[i])
+            currno = max(dp[0], dp[1]+prices[i]-fee)
+            dp[0], dp[1] = currno, currkeep
+        return dp[0]
 
 
 prices = [1, 3, 7, 5, 10, 3]
