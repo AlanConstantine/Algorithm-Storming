@@ -43,10 +43,11 @@ class Solution1:
         return res
 
 
-class Solution:
+class Solution2:
+    # 动态规划
     def maxProfit(self, prices) -> int:
         size = len(prices)
-        dp = [[0][0]] * size
+        dp = [[0, 0] for i in range(size)]
         # dp[i][0]表示表示第i天交易完后手里没有股票的最大利润
         # dp[i][1]表示表示第i天交易完后手里有股票的最大利润
         dp[0][0] = 0
@@ -57,6 +58,15 @@ class Solution:
             # 第i天手里持有股票也有两种可能：1:前一天没有持有股票但是今天买入了，2：或者前一天本身就持有股票
             dp[i][1] = max(dp[i-1][0]-prices[i], dp[i-1][1])
         return dp[-1][0]  # 不持有股票状态所得金钱一定比持有股票状态得到的多
+
+
+class Solution:
+    # dp空间优化
+    def maxProfit(self, prices) -> int:
+        dp = [0, -prices[0]]
+        for p in prices:
+            dp[0], dp[1] = max(dp[0], dp[1]+p), max(dp[1], dp[0]-p)
+        return dp[0]
 
 
 prices = [7, 1, 5, 3, 6, 4]
