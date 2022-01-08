@@ -56,7 +56,7 @@ class Solution2:
         return dp[0]
 
 
-class Solution:
+class Solution3:
     # 优化空间
     def maxProfit(self, prices, fee: int) -> int:
         dp = [0, -prices[0]]
@@ -64,6 +64,20 @@ class Solution:
             dp[0], dp[1] = max(dp[0], dp[1]+prices[i] -
                                fee), max(dp[1], dp[0]-prices[i])
         return dp[0]
+
+
+class Solution:
+    # 贪心
+    def maxProfit(self, prices, fee: int) -> int:
+        res = 0  # 记录结果
+        pre = prices[0]  # pre记录最小值
+        for p in prices:
+            if p > pre:
+                res += p-pre-fee  # 发生交易，需要扣除手续费
+                pre = p-fee  # 将最小值替换为当前价格减交易费，避免重复扣钱
+            elif p < pre:
+                pre = p
+        return res
 
 
 prices = [1, 3, 7, 5, 10, 3]
