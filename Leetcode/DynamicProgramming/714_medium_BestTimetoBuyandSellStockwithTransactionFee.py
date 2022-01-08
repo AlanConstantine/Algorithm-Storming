@@ -45,7 +45,7 @@ class Solution1:
         return no[-1]  # 手上没有持有股票的收益肯定比持有的多
 
 
-class Solution:
+class Solution2:
     # 优化空间
     def maxProfit(self, prices, fee: int) -> int:
         dp = [0, -prices[0]]
@@ -53,6 +53,16 @@ class Solution:
             currkeep = max(dp[1], dp[0]-prices[i])
             currno = max(dp[0], dp[1]+prices[i]-fee)
             dp[0], dp[1] = currno, currkeep
+        return dp[0]
+
+
+class Solution:
+    # 优化空间
+    def maxProfit(self, prices, fee: int) -> int:
+        dp = [0, -prices[0]]
+        for i in range(1, len(prices)):
+            dp[0], dp[1] = max(dp[0], dp[1]+prices[i] -
+                               fee), max(dp[1], dp[0]-prices[i])
         return dp[0]
 
 
