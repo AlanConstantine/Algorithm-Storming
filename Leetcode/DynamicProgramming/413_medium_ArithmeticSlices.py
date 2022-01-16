@@ -27,8 +27,23 @@
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 class Solution:
+    # 动态规划
     def numberOfArithmeticSlices(self, nums) -> int:
         size = len(nums)
         if size < 3:
             return 0
         dp = [0] * size
+        if nums[2] - nums[1] == nums[1] - nums[0]:
+            dp[2] = 1
+        diff = nums[2] - nums[1]  # 记录前两位公差
+        for i in range(3, size):
+            if nums[i] - nums[i-1] == diff:
+                dp[i] = dp[i-1]+1  # 如果满足公差相同,则方案累加并+1,具体可以自己举例子验证
+            else:
+                diff = nums[i] - nums[i-1]  # 否则重置公差
+                dp[i] = 0  # 当前i保持0方案
+        return sum(dp)
+
+
+nums = [1, 2, 3, 4, 5]
+print(Solution().numberOfArithmeticSlices(nums))
