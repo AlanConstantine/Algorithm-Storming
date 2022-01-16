@@ -15,6 +15,7 @@ class TreeNode:
 # 而G[n] = f[1] + f[2] + ... + f[n]
 # 总结:以m为根节点的BST总为f[i]=G[i-1]*G[n-i]
 
+# refer: https://leetcode-cn.com/problems/unique-binary-search-trees/solution/bu-tong-de-er-cha-sou-suo-shu-by-leetcode-solution/
 class Solution:
     def numTrees(self, n):
         if n == 0:
