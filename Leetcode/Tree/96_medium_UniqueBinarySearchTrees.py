@@ -13,6 +13,7 @@ class TreeNode:
 # 右子树的根节点为[i+1, i+2, ..., n]共n-(i+1)-1=n-i个节点，n-i个节点可以产生G[n-i]
 # 则f[i]根节点为i时的BST总数=G[i-1]*G[n-i]： f[i]=G[i-1]*G[n-i]
 # 而G[n] = f[1] + f[2] + ... + f[n]
+# 总结:以m为根节点的BST总为f[i]=G[i-1]*G[n-i]
 
 class Solution:
     def numTrees(self, n):
