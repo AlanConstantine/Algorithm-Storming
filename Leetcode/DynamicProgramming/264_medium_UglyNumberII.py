@@ -29,7 +29,7 @@ class Solution:
         dp = [1] * n
         index2, index3, index5 = 0, 0, 0
         for i in range(1, n):
-            dp[i] = min(2*dp[index2], 3*dp[index3], 5*dp[index5])
+            dp[i] = min(2*dp[index2], 3*dp[index3], 5*dp[index5])  # 找出最小丑数的索引
             if dp[i] == 2 * dp[index2]:
                 index2 += 1
             if dp[i] == 3*dp[index3]:
