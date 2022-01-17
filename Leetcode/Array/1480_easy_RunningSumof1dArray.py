@@ -43,9 +43,17 @@ class Solution1:
         return presum
 
 
-class Solution:
+class Solution2:
     # 本地计算,优化空间
     def runningSum(self, nums):
         for i in range(1, len(nums)):
             nums[i] = nums[i] + nums[i-1]
+        return nums
+
+
+class Solution:
+    # 本地计算,优化空间
+    def runningSum(self, nums):
+        for i in range(1, len(nums)):
+            nums[i] += nums[i-1]
         return nums
