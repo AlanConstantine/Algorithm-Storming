@@ -28,7 +28,13 @@
 class Solution:
     def lengthOfLIS(self, nums) -> int:
         size = len(nums)
-        dp = [0] * size
+        dp = [1] * size
+        for i in range(size):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    # 依次向前比较
+                    dp[i] = max(dp[j]+1, dp[i])
+        return max(dp)
 
 
 nums = [0, 1, 0, 3, 2, 3]
