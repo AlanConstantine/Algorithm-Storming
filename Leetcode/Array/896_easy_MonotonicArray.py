@@ -1,18 +1,14 @@
-# %% Change working directory from the workspace root to the ipynb file location. Turn this addition off with the DataScience.changeDirOnImportExport setting
-import os
-try:
-    os.chdir(os.path.join(os.getcwd(), 'Array'))
-    print(os.getcwd())
-except:
-    pass
+# -*- coding: utf-8 -*-
+# @Author: Alan Lau
+# @Date: 2018-10-25 17:17:28
 
-# %%
 # 如果数组是单调递增或单调递减的，那么它是单调的。
 
 # 如果对于所有 i <= j，A[i] <= A[j]，那么数组 A 是单调递增的。 如果对于所有 i <= j，A[i]> = A[j]，那么数组 A 是单调递减的。
 
-# 当给定的数组 A 是单调数组时返回 true，否则返回 false。
+# 当给定的数组 A 是单调数组时返回 true，否则返回 false。
 
+#  
 
 # 示例 1：
 
@@ -30,40 +26,21 @@ except:
 
 # 输入：[1,2,4,5]
 # 输出：true
-# 示例 5：
+# 示例 5：
 
 # 输入：[1,1,1]
 # 输出：true
-
+#  
 
 # 提示：
 
 # 1 <= A.length <= 50000
 # -100000 <= A[i] <= 100000
+# 通过次数62,293提交次数106,671
 
-
-# %%
-class Solution:
-    def isMonotonic(self, A):
-        """
-        :type A: List[int]
-        :rtype: bool
-        """
-        increase = 0
-        decrease = 0
-        equal = 0
-        for i in range(1, len(A)):
-            if A[i-1] < A[i]:
-                increase += 1
-            elif A[i-1] > A[i]:
-                decrease += 1
-            else:
-                equal += 1
-        if equal == len(A)-1 or increase == 0 or decrease == 0:
-            return True
-        else:
-            return False
-
+# 来源：力扣（LeetCode）
+# 链接：https://leetcode-cn.com/problems/monotonic-array
+# 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 class Solution2:
     def isMonotonic(self, A):
@@ -71,22 +48,18 @@ class Solution2:
                 all(A[i] >= A[i+1] for i in range(len(A) - 1)))
 
 
-class Solution3:
-    def isMonotonic(self, A):
-        store = 0
-        for i in range(len(A) - 1):
-            c = cmp(A[i], A[i+1])
-            if c:
-                if c != store != 0:
-                    return False
-                store = c
-        return True
+class Solution:
+    def isMonotonic(self, nums) -> bool:
+        flag = set()
+        for i in range(1, len(nums)):
+            if nums[i] > nums[i-1]:
+                flag.add(1)
+            if nums[i] < nums[i-1]:
+                flag.add(0)
+        return True if len(flag) <= 1 else False
 
 
-# %%
 A = [1, 2, 2, 3]
 
-
-# %%
-s = Solution2()
+s = Solution()
 print(s.isMonotonic(A))
